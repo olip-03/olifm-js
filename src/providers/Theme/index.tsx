@@ -34,9 +34,8 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   }, [])
 
   useEffect(() => {
-    let themeToSet: Theme = 'light'
-    document.documentElement.setAttribute('data-theme', themeToSet)
-    setThemeState(themeToSet)
+    document.documentElement.setAttribute('data-theme', 'light')
+    setThemeState('light')
   }, [])
 
   return <ThemeContext value={{ setTheme, theme }}>{children}</ThemeContext>

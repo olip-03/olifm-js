@@ -7,7 +7,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
     slug: 'home',
     _status: 'published',
     hero: {
-      type: 'highImpact',
+      type: 'leftAlign',
       links: [
         {
           link: {
@@ -503,7 +503,9 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
       {
         blockName: 'Archive Block',
         blockType: 'archive',
-        categories: [],
+        categories: [] as (number | any)[], // avoid never[] by casting
+        displayMode: 'list' as const, // keep literal type
+        enableFiltering: 'false' as const, // IMPORTANT: use string "false" not boolean false
         introContent: {
           root: {
             type: 'root',
