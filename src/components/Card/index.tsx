@@ -2,7 +2,7 @@
 import { cn } from '@/utilities/ui'
 import useClickableCard from '@/utilities/useClickableCard'
 import Link from 'next/link'
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 
 import type { Post } from '@/payload-types'
 
@@ -17,67 +17,59 @@ export const Card: React.FC<{
   relationTo?: 'posts'
   showCategories?: boolean
   title?: string
+  displayMode?: 'grid' | 'list'
 }> = (props) => {
   const { card, link } = useClickableCard({})
-  const { className, doc, relationTo, showCategories, title: titleFromProps } = props
+  const { className, doc, relationTo, showCategories, title: titleFromProps, displayMode } = props
 
   const { slug, categories, meta, title } = doc || {}
   const { description, image: metaImage } = meta || {}
 
   const hasCategories = categories && Array.isArray(categories) && categories.length > 0
   const titleToUse = titleFromProps || title
-  const sanitizedDescription = description?.replace(/\s/g, ' ') // replace non-breaking space with white space
+  const sanitizedDescription = description?.replace(/\s/g, ' ')
   const href = `/${relationTo}/${slug}`
+
+  const isListMode = displayMode === 'list'
 
   return (
     <article
       className={cn(
-        'border border-border rounded-lg overflow-hidden bg-card hover:cursor-pointer',
+        'border flex border-border rounded-lg overflow-hidden bg-card hover:cursor-pointer ',
+        isListMode ? 'flex-row h-32' : 'flex-col ', // Add fixed height
         className,
       )}
       ref={card.ref}
     >
-      <div className="relative w-full ">
+      <div className={cn('relative', isListMode ? 'w-48 flex-shrink-0' : 'w-full')}>
         {!metaImage && <div className="">No image</div>}
-        {metaImage && typeof metaImage !== 'string' && <Media resource={metaImage} size="33vw" />}
+        {metaImage && typeof metaImage !== 'string' && (
+          <Media
+            resource={metaImage}
+            size={isListMode ? '200px' : '33vw'}
+            className={isListMode ? 'h-full object-cover w-full' : ''}
+          />
+        )}
       </div>
-      <div className="p-4">
+      <div className={cn('p-4 overflow-hidden', isListMode ? 'flex-1 min-h-0' : '')}>
+        {/* Content with text truncation */}
         {showCategories && hasCategories && (
-          <div className="uppercase text-sm mb-4">
-            {showCategories && hasCategories && (
-              <div>
-                {categories?.map((category, index) => {
-                  if (typeof category === 'object') {
-                    const { title: titleFromCategory } = category
-
-                    const categoryTitle = titleFromCategory || 'Untitled category'
-
-                    const isLast = index === categories.length - 1
-
-                    return (
-                      <Fragment key={index}>
-                        {categoryTitle}
-                        {!isLast && <Fragment>, &nbsp;</Fragment>}
-                      </Fragment>
-                    )
-                  }
-
-                  return null
-                })}
-              </div>
-            )}
-          </div>
+          <div className="uppercase text-sm">{/* categories content */}</div>
         )}
         {titleToUse && (
           <div className="prose">
-            <h3>
+            <h3 className={isListMode ? 'line-clamp-2' : ''}>
               <Link className="not-prose" href={href} ref={link.ref}>
                 {titleToUse}
               </Link>
             </h3>
           </div>
         )}
-        {description && <div className="mt-2">{description && <p>{sanitizedDescription}</p>}</div>}
+        {description && (
+          <div className="mt-2">
+            <p className={isListMode ? 'line-clamp-2 text-sm' : ''}>{sanitizedDescription}</p>
+          </div>
+        )}
       </div>
     </article>
   )

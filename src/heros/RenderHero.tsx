@@ -2,14 +2,14 @@ import React from 'react'
 
 import type { Page } from '@/payload-types'
 
-import { HighImpactHero } from '@/heros/HighImpact'
-import { LowImpactHero } from '@/heros/LowImpact'
-import { MediumImpactHero } from '@/heros/MediumImpact'
+import { CenterAlignHero } from '@/heros/CentreAlign'
+import { LeftAlignHero } from '@/heros/LeftAlign'
+import { RightAlignHero } from '@/heros/RightAlign'
 
 const heroes = {
-  highImpact: HighImpactHero,
-  lowImpact: LowImpactHero,
-  mediumImpact: MediumImpactHero,
+  centreAlign: CenterAlignHero,
+  leftAlign: LeftAlignHero,
+  rightAlign: RightAlignHero,
 }
 
 export const RenderHero: React.FC<Page['hero']> = (props) => {

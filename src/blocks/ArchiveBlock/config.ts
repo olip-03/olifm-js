@@ -67,6 +67,32 @@ export const Archive: Block = {
       relationTo: 'categories',
     },
     {
+      name: 'displayMode',
+      type: 'radio',
+      required: true,
+      defaultValue: 'grid',
+      options: [
+        { label: 'Grid', value: 'grid' },
+        { label: 'List', value: 'list' },
+      ],
+      admin: {
+        layout: 'horizontal',
+      },
+    },
+    {
+      name: 'enableFiltering',
+      type: 'radio',
+      required: true,
+      defaultValue: 'false',
+      options: [
+        { label: 'Yes', value: 'true' },
+        { label: 'No', value: 'false' },
+      ],
+      admin: {
+        layout: 'horizontal',
+      },
+    },
+    {
       name: 'limit',
       type: 'number',
       admin: {

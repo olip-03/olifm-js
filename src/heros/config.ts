@@ -16,7 +16,7 @@ export const hero: Field = {
     {
       name: 'type',
       type: 'select',
-      defaultValue: 'lowImpact',
+      defaultValue: 'leftAlign',
       label: 'Type',
       options: [
         {
@@ -24,16 +24,16 @@ export const hero: Field = {
           value: 'none',
         },
         {
-          label: 'High Impact',
-          value: 'highImpact',
+          label: 'Right Align',
+          value: 'rightAlign',
         },
         {
-          label: 'Medium Impact',
-          value: 'mediumImpact',
+          label: 'Left Align',
+          value: 'leftAlign',
         },
         {
-          label: 'Low Impact',
-          value: 'lowImpact',
+          label: 'Centre Align',
+          value: 'centreAlign',
         },
       ],
       required: true,
@@ -58,15 +58,6 @@ export const hero: Field = {
         maxRows: 2,
       },
     }),
-    {
-      name: 'media',
-      type: 'upload',
-      admin: {
-        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
-      },
-      relationTo: 'media',
-      required: true,
-    },
   ],
   label: false,
 }

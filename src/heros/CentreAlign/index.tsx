@@ -4,7 +4,7 @@ import type { Page } from '@/payload-types'
 
 import RichText from '@/components/RichText'
 
-type LowImpactHeroType =
+type CenterAlignHeroType =
   | {
       children?: React.ReactNode
       richText?: never
@@ -14,10 +14,10 @@ type LowImpactHeroType =
       richText?: Page['hero']['richText']
     })
 
-export const LowImpactHero: React.FC<LowImpactHeroType> = ({ children, richText }) => {
+export const CenterAlignHero: React.FC<CenterAlignHeroType> = ({ children, richText }) => {
   return (
-    <div className="container mt-16">
-      <div className="max-w-[48rem]">
+    <div className="container">
+      <div className="max-w-[48rem] mx-auto text-center">
         {children || (richText && <RichText data={richText} enableGutter={false} />)}
       </div>
     </div>

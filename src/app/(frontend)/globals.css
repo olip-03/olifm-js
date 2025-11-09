@@ -14,8 +14,8 @@
   }
 
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: #f0f0f0;
+    --foreground: #f0f0f0;
 
     --card: 240 5% 96%;
     --card-foreground: 222.2 84% 4.9%;
@@ -100,4 +100,8 @@ html {
 html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
+}
+
+.bg-background {
+  background-color: var(--background);
 }
