@@ -21,7 +21,7 @@ jobs:
       - name: Set up pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 8
+          version: 9
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -71,4 +71,5 @@ jobs:
           app-name: 'olifm'
           slot-name: 'Production'
           package: .
+
 
