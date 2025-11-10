@@ -18,10 +18,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js version
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '24.x'
+          node-version: '18'
+          cache: 'pnpm'
 
       - name: npm install, build, and test
         env:
@@ -65,3 +71,4 @@ jobs:
           app-name: 'olifm'
           slot-name: 'Production'
           package: .
+
