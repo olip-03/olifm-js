@@ -14,7 +14,6 @@ export const ArchiveBlock: React.FC<
   const {
     id,
     categories,
-    introContent,
     limit: limitFromProps,
     populateBy,
     displayMode,
@@ -77,14 +76,7 @@ export const ArchiveBlock: React.FC<
   ]
 
   return (
-    <div className="my-16" id={`block-${id}`}>
-      {introContent && (
-        <div className="container mb-16">
-          <RichText className="ms-0 max-w-[48rem]" data={introContent} enableGutter={false} />
-        </div>
-      )}
-
-      {/* PASS DATA TO CLIENT COMPONENT */}
+    <div className="my-8" id={`block-${id}`}>
       <ArchiveClient
         posts={posts}
         filterCategories={filterCategories}

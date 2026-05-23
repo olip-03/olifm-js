@@ -41,16 +41,18 @@ export const Card: React.FC<{
       )}
       ref={card.ref}
     >
-      <div className={cn('relative', isListMode ? 'w-48 flex-shrink-0' : 'w-full')}>
-        {!metaImage && <div className="">No image</div>}
-        {metaImage && typeof metaImage !== 'string' && (
-          <Media
-            resource={metaImage}
-            size={isListMode ? '200px' : '33vw'}
-            className={isListMode ? 'h-full object-cover w-full' : ''}
-          />
-        )}
-      </div>
+      {metaImage !== null && metaImage !== undefined && (
+        <div className={cn('relative', isListMode ? 'w-48 flex-shrink-0' : 'w-full')}>
+          {typeof metaImage !== 'string' && (
+            <Media
+              resource={metaImage}
+              size={isListMode ? '200px' : '33vw'}
+              className={isListMode ? 'h-full object-cover w-full' : ''}
+            />
+          )}
+        </div>
+      )}
+
       <div className={cn('p-4 overflow-hidden', isListMode ? 'flex-1 min-h-0' : '')}>
         {/* Content with text truncation */}
         {showCategories && hasCategories && (

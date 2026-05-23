@@ -18,13 +18,11 @@ export const ArchiveClient: React.FC<Props> = ({
   displayMode,
   enableFiltering,
 }) => {
-  // CLIENT-SIDE STATE FOR FILTERING
   const [selectedCategories, setSelectedCategories] = useState<Category[]>([])
 
-  // ACTUAL FILTERING LOGIC (THIS WAS MISSING FROM YOUR ORIGINAL)
   const filteredPosts = useMemo(() => {
     if (selectedCategories.length === 0) {
-      return posts // Show all posts when no filters selected
+      return posts
     }
 
     return posts.filter((post) => {
@@ -35,7 +33,6 @@ export const ArchiveClient: React.FC<Props> = ({
           )
           .map((cat) => cat.id) ?? []
 
-      // Show post if it has ANY of the selected categories
       return selectedCategories.some((selectedCat) => postCategoryIds.includes(selectedCat.id))
     })
   }, [posts, selectedCategories])

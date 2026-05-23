@@ -106,6 +106,16 @@ export const Pages: CollectionConfig<'pages'> = {
               titlePath: 'meta.title',
               descriptionPath: 'meta.description',
             }),
+            {
+              name: 'noIndex',
+              type: 'checkbox',
+              label: 'De-index this page (Hide from Search Engines)',
+              defaultValue: false,
+              admin: {
+                description:
+                  'When enabled, this adds a "noindex, nofollow" tag to prevent search crawlers from listing this page.',
+              },
+            },
           ],
         },
       ],

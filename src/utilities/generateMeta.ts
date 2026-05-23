@@ -30,6 +30,8 @@ export const generateMeta = async (args: {
     ? doc?.meta?.title + ' | Payload Website Template'
     : 'Payload Website Template'
 
+  const isNoIndex = (doc?.meta as any)?.noIndex === true
+
   return {
     description: doc?.meta?.description,
     openGraph: mergeOpenGraph({
@@ -45,5 +47,9 @@ export const generateMeta = async (args: {
       url: Array.isArray(doc?.slug) ? doc?.slug.join('/') : '/',
     }),
     title,
+    robots: {
+      index: !isNoIndex,
+      follow: !isNoIndex,
+    },
   }
 }
