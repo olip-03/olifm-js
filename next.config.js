@@ -1,5 +1,6 @@
+cat << 'EOF' > /var/www/olifm-js/next.config.js
 import { withPayload } from '@payloadcms/next/withPayload'
-
+import path from 'node:path'
 import redirects from './redirects.js'
 
 const NEXT_PUBLIC_SERVER_URL = process.env.VERCEL_PROJECT_PRODUCTION_URL
@@ -21,10 +22,17 @@ const nextConfig = {
     ],
   },
   webpack: (webpackConfig) => {
+    // 1. Maintain existing extension rules
     webpackConfig.resolve.extensionAlias = {
       '.cjs': ['.cts', '.cjs'],
       '.js': ['.ts', '.tsx', '.js', '.jsx'],
       '.mjs': ['.mts', '.mjs'],
+    }
+
+    // 2. Force explicit resolution for path aliases (Fixing the Webpack error)
+    webpackConfig.resolve.alias = {
+      ...(webpackConfig.resolve.alias ?? {}),
+      '@': path.resolve(process.cwd(), 'src'),
     }
 
     return webpackConfig
@@ -34,3 +42,4 @@ const nextConfig = {
 }
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })
+EOF
