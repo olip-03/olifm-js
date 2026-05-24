@@ -12,3 +12,5 @@ export const Providers: React.FC<{
     </ThemeProvider>
   )
 }
+export { HeaderThemeProvider } from './HeaderTheme'
+export { useHeaderTheme } from './HeaderTheme'
