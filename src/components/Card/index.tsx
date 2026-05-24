@@ -8,7 +8,7 @@ import type { Post } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 
-export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title'>
+export type CardPostData = Pick<Post, 'slug' | 'categories' | 'meta' | 'title' | 'heroImage'>
 
 export const Card: React.FC<{
   alignItems?: 'center'
@@ -22,8 +22,10 @@ export const Card: React.FC<{
   const { card, link } = useClickableCard({})
   const { className, doc, relationTo, showCategories, title: titleFromProps, displayMode } = props
 
-  const { slug, categories, meta, title } = doc || {}
+  const { slug, categories, meta, title, heroImage } = doc || {}
   const { description, image: metaImage } = meta || {}
+
+  const cardImage = heroImage || metaImage
 
   const hasCategories = categories && Array.isArray(categories) && categories.length > 0
   const titleToUse = titleFromProps || title
@@ -41,11 +43,11 @@ export const Card: React.FC<{
       )}
       ref={card.ref}
     >
-      {metaImage !== null && metaImage !== undefined && (
+      {cardImage !== null && cardImage !== undefined && (
         <div className={cn('relative', isListMode ? 'w-48 flex-shrink-0' : 'w-full')}>
-          {typeof metaImage !== 'string' && (
+          {typeof cardImage !== 'string' && (
             <Media
-              resource={metaImage}
+              resource={cardImage}
               size={isListMode ? '200px' : '33vw'}
               className={isListMode ? 'h-full object-cover w-full' : ''}
             />
