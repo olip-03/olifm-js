@@ -1,4 +1,3 @@
-cat << 'EOF' > /var/www/olifm-js/next.config.js
 import { withPayload } from '@payloadcms/next/withPayload'
 import path from 'node:path'
 import redirects from './redirects.js'
@@ -33,6 +32,7 @@ const nextConfig = {
     webpackConfig.resolve.alias = {
       ...(webpackConfig.resolve.alias ?? {}),
       '@': path.resolve(process.cwd(), 'src'),
+      '@payload-config': path.resolve(process.cwd(), 'src/payload.config.ts'),
     }
 
     return webpackConfig
@@ -42,4 +42,3 @@ const nextConfig = {
 }
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })
-EOF
