@@ -39,7 +39,7 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
                   format: 0,
                   mode: 'normal',
                   style: '',
-                  text: 'Payload Website Template',
+                  text: "Oliver Posa's Blog",
                   version: 1,
                 },
               ],
@@ -655,8 +655,8 @@ export const home: (args: HomeArgs) => RequiredDataFromCollectionSlug<'pages'> =
       },
     ],
     meta: {
-      description: 'An open-source website built with Payload and Next.js.',
-      title: 'Payload Website Template',
+      description: "Oliver Posa's personal blog & web archive.",
+      title: "Oliver Posa's Blog",
     },
     title: 'Home',
   }
