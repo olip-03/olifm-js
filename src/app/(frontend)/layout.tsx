@@ -41,6 +41,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
   openGraph: mergeOpenGraph(),
+  title: {
+    template: '%s | oli.fm',
+    default: "Oliver Posa's personal blog & web archive.",
+  },
   twitter: {
     card: 'summary_large_image',
     creator: '@payloadcms',
