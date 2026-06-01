@@ -38,6 +38,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   )
 }
 
+// todo: update name
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
   openGraph: mergeOpenGraph(),
