@@ -17,6 +17,9 @@ importers:
       '@payloadcms/db-sqlite':
         specifier: 3.62.1
         version: 3.62.1(payload@3.62.1(graphql@16.12.0)(typescript@5.7.3))
+      '@payloadcms/email-nodemailer':
+        specifier: ^3.85.0
+        version: 3.85.0(payload@3.62.1(graphql@16.12.0)(typescript@5.7.3))
       '@payloadcms/live-preview-react':
         specifier: 3.62.1
         version: 3.62.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -1791,6 +1794,12 @@ packages:
     engines: {node: ^18.20.2 || >=20.9.0}
     peerDependencies:
       payload: 3.62.1
+
+  '@payloadcms/email-nodemailer@3.85.0':
+    resolution: {integrity: sha512-TeWdnPQL1vIHOZRu6ll+SznuN8QkdacLLvqj8GJf+pkZjpCtiLst2kQd59q2Xen+wpYiQAoKcKi4x4Sx0b8i7A==}
+    engines: {node: ^18.20.2 || >=20.9.0}
+    peerDependencies:
+      payload: 3.85.0
 
   '@payloadcms/graphql@3.62.1':
     resolution: {integrity: sha512-3M2yUwfgELPDKb/15rXe2Q1q/LZg8qQYSHFekg++vH/Gj2gMfM/9Tn5xK25ecoArmlznaxOwpxaYVXn9qQoKSw==}
@@ -4577,6 +4586,10 @@ packages:
 
   nodemailer@7.0.9:
     resolution: {integrity: sha512-9/Qm0qXIByEP8lEV2qOqcAW7bRpL8CR9jcTwk3NBnHJNmP9fIJ86g2fgmIXqHY+nj55ZEMwWqYAT2QTDpRUYiQ==}
+    engines: {node: '>=6.0.0'}
+
+  nodemailer@8.0.10:
+    resolution: {integrity: sha512-BLFuSth7QtHOkBzyqTehWWyub0NTRDuK2Q2SQfnGLsrJnzyU+Yeh4WpV1eZGuARFj1xQJHIdnTuJZLP+b9R1GQ==}
     engines: {node: '>=6.0.0'}
 
   noms@0.0.0:
@@ -7710,6 +7723,11 @@ snapshots:
   '@payloadcms/email-nodemailer@3.62.1(payload@3.62.1(graphql@16.12.0)(typescript@5.7.3))':
     dependencies:
       nodemailer: 7.0.9
+      payload: 3.62.1(graphql@16.12.0)(typescript@5.7.3)
+
+  '@payloadcms/email-nodemailer@3.85.0(payload@3.62.1(graphql@16.12.0)(typescript@5.7.3))':
+    dependencies:
+      nodemailer: 8.0.10
       payload: 3.62.1(graphql@16.12.0)(typescript@5.7.3)
 
   '@payloadcms/graphql@3.62.1(graphql@16.12.0)(payload@3.62.1(graphql@16.12.0)(typescript@5.7.3))(typescript@5.7.3)':
@@ -10908,6 +10926,8 @@ snapshots:
   node-releases@2.0.27: {}
 
   nodemailer@7.0.9: {}
+
+  nodemailer@8.0.10: {}
 
   noms@0.0.0:
     dependencies:

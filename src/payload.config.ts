@@ -5,7 +5,7 @@ import sharp from 'sharp' // sharp-import
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
-
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
@@ -80,6 +80,19 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
+  email: nodemailerAdapter({
+    defaultFromAddress: 'admin@oli.fm',
+    defaultFromName: 'Olifm Site Admin',
+    transportOptions: {
+      host: '192.168.189.140',
+      port: 1026,
+      secure: false,
+      auth: {
+        user: process.env.PROTON_PROXY_USER,
+        pass: process.env.PROTON_PROXY_PASS,
+      },
+    },
+  }),
   jobs: {
     access: {
       run: ({ req }: { req: PayloadRequest }): boolean => {
