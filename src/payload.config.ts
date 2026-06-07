@@ -91,6 +91,9 @@ export default buildConfig({
         user: process.env.PROTON_PROXY_USER,
         pass: process.env.PROTON_PROXY_PASS,
       },
+      tls: {
+        rejectUnauthorized: false,
+      },
     },
   }),
   jobs: {
