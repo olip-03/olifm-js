@@ -82,7 +82,7 @@ export default buildConfig({
   },
   email: nodemailerAdapter({
     defaultFromAddress: 'admin@oli.fm',
-    defaultFromName: 'Olifm Site Admin',
+    defaultFromName: 'Olifm Admin',
     transportOptions: {
       host: '192.168.189.140',
       port: 1026,
